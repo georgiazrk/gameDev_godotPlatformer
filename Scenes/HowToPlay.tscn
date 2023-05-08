@@ -1,0 +1,266 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://assets/fonts/alagard.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/HowToPlay.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/Pixellari.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/fonts/212 Keyboard.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/Sprites/Pies/ButterChickenIdle0.png" type="Texture" id=5]
+[ext_resource path="res://assets/Sprites/hearts/full_heart.png" type="Texture" id=6]
+[ext_resource path="res://assets/pig_minions/minion1/1minion0.png" type="Texture" id=7]
+[ext_resource path="res://assets/4 Animated objects/coin4.png" type="Texture" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 25
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 30
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 15
+font_data = ExtResource( 3 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="BkG" type="ColorRect" parent="."]
+margin_right = 800.0
+margin_bottom = 480.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="HowToPlay" type="Label" parent="."]
+margin_left = 246.0
+margin_top = 35.0
+margin_right = 522.0
+margin_bottom = 83.0
+custom_fonts/font = SubResource( 1 )
+text = "How To Play"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 240.0
+margin_top = 90.0
+margin_right = 528.0
+margin_bottom = 96.0
+
+[node name="BackBtn" type="Button" parent="."]
+margin_left = 19.0
+margin_top = 17.0
+margin_right = 104.0
+margin_bottom = 47.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.803922, 0.803922, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "< Back"
+flat = true
+
+[node name="ControlSection" type="Node" parent="."]
+
+[node name="Controls" type="Label" parent="ControlSection"]
+margin_left = 130.0
+margin_top = 130.0
+margin_right = 241.0
+margin_bottom = 161.0
+custom_fonts/font = SubResource( 3 )
+text = "Controls"
+
+[node name="ControlUnderline" type="ColorRect" parent="ControlSection"]
+margin_left = 118.0
+margin_top = 162.0
+margin_right = 255.0
+margin_bottom = 165.0
+
+[node name="Jump" type="Label" parent="ControlSection"]
+margin_left = 110.0
+margin_top = 203.0
+margin_right = 160.0
+margin_bottom = 223.0
+custom_fonts/font = SubResource( 4 )
+text = "Jump"
+align = 2
+
+[node name="Move Right" type="Label" parent="ControlSection"]
+margin_left = 62.0
+margin_top = 242.0
+margin_right = 159.0
+margin_bottom = 262.0
+custom_fonts/font = SubResource( 4 )
+text = "Move Right"
+align = 2
+
+[node name="Move Left" type="Label" parent="ControlSection"]
+margin_left = 74.0
+margin_top = 283.0
+margin_right = 159.0
+margin_bottom = 303.0
+custom_fonts/font = SubResource( 4 )
+text = "Move Left"
+align = 2
+
+[node name="Shoot" type="Label" parent="ControlSection"]
+margin_left = 110.0
+margin_top = 321.0
+margin_right = 160.0
+margin_bottom = 341.0
+custom_fonts/font = SubResource( 4 )
+text = "Shoot"
+align = 2
+
+[node name="Pause" type="Label" parent="ControlSection"]
+margin_left = 58.0
+margin_top = 360.0
+margin_right = 161.0
+margin_bottom = 380.0
+custom_fonts/font = SubResource( 4 )
+text = "Pause/Back"
+align = 2
+
+[node name="UpArrow" type="Label" parent="ControlSection"]
+margin_left = 210.0
+margin_top = 200.0
+margin_right = 279.0
+margin_bottom = 229.0
+custom_fonts/font = SubResource( 5 )
+text = "q W"
+align = 1
+
+[node name="->" type="Label" parent="ControlSection"]
+margin_left = 210.0
+margin_top = 239.0
+margin_right = 279.0
+margin_bottom = 268.0
+custom_fonts/font = SubResource( 5 )
+text = "t D"
+align = 1
+
+[node name="<-" type="Label" parent="ControlSection"]
+margin_left = 211.0
+margin_top = 280.0
+margin_right = 280.0
+margin_bottom = 309.0
+custom_fonts/font = SubResource( 5 )
+text = "s A"
+align = 1
+
+[node name="Space" type="Label" parent="ControlSection"]
+margin_left = 211.0
+margin_top = 318.0
+margin_right = 280.0
+margin_bottom = 347.0
+custom_fonts/font = SubResource( 5 )
+text = "w"
+
+[node name="Space2" type="Label" parent="ControlSection"]
+margin_left = 211.0
+margin_top = 358.0
+margin_right = 280.0
+margin_bottom = 387.0
+custom_fonts/font = SubResource( 5 )
+text = "m"
+align = 1
+
+[node name="AimSection" type="Node" parent="."]
+
+[node name="ToWin" type="Label" parent="AimSection"]
+margin_left = 524.0
+margin_top = 128.0
+margin_right = 635.0
+margin_bottom = 159.0
+custom_fonts/font = SubResource( 3 )
+text = "Aim"
+align = 1
+valign = 1
+
+[node name="ControlUnderline" type="ColorRect" parent="AimSection"]
+margin_left = 512.0
+margin_top = 160.0
+margin_right = 649.0
+margin_bottom = 163.0
+
+[node name="Pie1" type="TextureRect" parent="AimSection"]
+margin_left = 391.0
+margin_top = 169.0
+margin_right = 476.0
+margin_bottom = 221.0
+rect_scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 5 )
+expand = true
+
+[node name="PiesInstructions" type="Label" parent="AimSection"]
+margin_left = 480.0
+margin_top = 176.0
+margin_right = 703.0
+margin_bottom = 211.0
+custom_fonts/font = SubResource( 6 )
+text = "Find 3 of Dags stolen pies in each level to progress and win!"
+autowrap = true
+
+[node name="CoinInstructions" type="Label" parent="AimSection"]
+margin_left = 480.0
+margin_top = 237.0
+margin_right = 703.0
+margin_bottom = 272.0
+custom_fonts/font = SubResource( 6 )
+text = "Make sure to collect all the coins in each level"
+autowrap = true
+
+[node name="HeartsInstructions" type="Label" parent="AimSection"]
+margin_left = 480.0
+margin_top = 300.0
+margin_right = 703.0
+margin_bottom = 354.0
+custom_fonts/font = SubResource( 6 )
+text = "Be careful, if you loose 3 hearts or fall down the level will reset!"
+autowrap = true
+
+[node name="EnemyInstructions" type="Label" parent="AimSection"]
+margin_left = 480.0
+margin_top = 367.0
+margin_right = 703.0
+margin_bottom = 421.0
+custom_fonts/font = SubResource( 6 )
+text = "Kill Pickles minions by jumping on them or shooting them!"
+autowrap = true
+
+[node name="coinsImg" type="TextureRect" parent="AimSection"]
+margin_left = 397.0
+margin_top = 229.0
+margin_right = 424.0
+margin_bottom = 253.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 8 )
+expand = true
+
+[node name="heartsIMg" type="TextureRect" parent="AimSection"]
+margin_left = 398.0
+margin_top = 299.0
+margin_right = 425.0
+margin_bottom = 323.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="enemyIMg" type="TextureRect" parent="AimSection"]
+margin_left = 398.0
+margin_top = 364.0
+margin_right = 428.0
+margin_bottom = 386.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+expand = true
+
+[connection signal="pressed" from="BackBtn" to="." method="_on_BackBtn_pressed"]

@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/sound and music/Music/Level Music.mp3" type="AudioStream" id=1]
+[ext_resource path="res://assets/sound and music/Music/swampSounds.mp3" type="AudioStream" id=2]
+[ext_resource path="res://autoloads/MusicController.gd" type="Script" id=3]
+[ext_resource path="res://assets/sound and music/Music/MenuMusic.mp3" type="AudioStream" id=4]
+[ext_resource path="res://assets/sound and music/Music/DeathSceneMusi.mp3" type="AudioStream" id=5]
+[ext_resource path="res://assets/sound and music/Music/End Credits.mp3" type="AudioStream" id=6]
+[ext_resource path="res://assets/sound and music/Music/Boss Fight Music.mp3" type="AudioStream" id=7]
+
+[node name="MusicController" type="Node"]
+script = ExtResource( 3 )
+
+[node name="LevelMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -12.0
+
+[node name="AmbientSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -10.0
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -10.0
+
+[node name="GameOverMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -15.0
+
+[node name="WinMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -10.0
+
+[node name="BossMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -15.0

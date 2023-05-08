@@ -1,0 +1,115 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/fonts/alagard.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/Pixellari.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scenes/Win.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 60
+outline_size = 3
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "FadeOut"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("FadingLayer:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Fading"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("FadingLayer:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("FadingLayer:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ) ]
+}
+
+[node name="Win" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 800.0
+margin_bottom = 448.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="EndingText" type="Label" parent="."]
+margin_left = 169.0
+margin_top = 179.0
+margin_right = 599.0
+margin_bottom = 245.0
+custom_fonts/font = SubResource( 2 )
+text = "Dag returns to the village and sleeps peacefully after his adventure, with a full belly and a warm heart. The village won't go hungry... this time."
+align = 1
+autowrap = true
+
+[node name="YouWin" type="Label" parent="."]
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 800.0
+margin_bottom = 448.0
+custom_colors/font_color = Color( 0.160784, 0.72549, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.109804, 0.501961, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+custom_styles/normal = SubResource( 7 )
+text = "YOU WIN"
+align = 1
+valign = 1
+
+[node name="FadingLayer" type="ColorRect" parent="."]
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 800.0
+margin_bottom = 448.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/FadeOut = SubResource( 4 )
+anims/Fading = SubResource( 5 )
+anims/RESET = SubResource( 6 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

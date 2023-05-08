@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Scripts/enemy1.gd" type="Script" id=1]
+[ext_resource path="res://assets/pig_minions/minion1/1minion1.png" type="Texture" id=2]
+[ext_resource path="res://assets/pig_minions/minion1/1minionRed.png" type="Texture" id=3]
+[ext_resource path="res://assets/pig_minions/minion1/1minion2.png" type="Texture" id=4]
+[ext_resource path="res://assets/pig_minions/minion1/1minion3.png" type="Texture" id=5]
+[ext_resource path="res://assets/pig_minions/minion1/1minion0.png" type="Texture" id=6]
+[ext_resource path="res://assets/sound and music/Sounds/pigsqueal1.mp3" type="AudioStream" id=7]
+[ext_resource path="res://assets/sound and music/Sounds/piggrunt1.mp3" type="AudioStream" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 0.5 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "crawl",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "die",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 9.5, 1 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 14, 8.5 )
+
+[node name="enemy1" type="KinematicBody2D"]
+collision_layer = 16
+collision_mask = 3
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 10.5 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "crawl"
+playing = true
+
+[node name="floor_checker" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 20 )
+collision_mask = 2
+
+[node name="top_checker" type="Area2D" parent="."]
+position = Vector2( 1, -12 )
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="top_checker"]
+position = Vector2( -1.5, 3 )
+shape = SubResource( 3 )
+
+[node name="sides_checker" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 33
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sides_checker"]
+position = Vector2( -1, 1 )
+shape = SubResource( 4 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.7
+
+[node name="pigSquealFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+volume_db = -10.0
+
+[node name="pigOinkFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+volume_db = -10.0
+
+[connection signal="body_entered" from="top_checker" to="." method="_on_top_checker_body_entered"]
+[connection signal="body_entered" from="sides_checker" to="." method="_on_sides_checker_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

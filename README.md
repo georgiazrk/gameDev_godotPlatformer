@@ -10,3 +10,5 @@ Skills applied:
 - UI/HUD Design
 - Game Theory
 - Cognitive Flow Theory
+
+Please note that the game assets have not been uploaded here and I was not able to upload the executable file for the game due to size restrictions on GitHub.
